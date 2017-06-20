@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 export class TodoBuyServiceProvider {
 
   data: any;
+  savedData: any;
   uri = "http://localhost:8080/api/v1/todobuys";
 
   constructor(public http: Http) {
@@ -38,6 +39,17 @@ export class TodoBuyServiceProvider {
           resolve(this.data);
         });
     });
-}
+  }
+
+  save(data) {
+    return new Promise(resolve => {
+      this.http.post(this.uri, data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.savedData = data.result;
+          resolve(this.savedData);
+        });
+    }); 
+  }
 
 }
