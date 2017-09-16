@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+
 
 /*
   Generated class for the TodoBuyServiceProvider provider.
@@ -16,7 +21,7 @@ export class TodoBuyServiceProvider {
   uri = "http://localhost:8080/api/v1/todobuys";
 
   constructor(public http: Http) {
-
+    this.data = {};
   }
 
   load() {
@@ -35,21 +40,49 @@ export class TodoBuyServiceProvider {
         .subscribe(data => {
           // we've got back the raw data, now generate the core schedule data
           // and save the data for later reference
-          this.data = data.result;
+          this.data = data;
           resolve(this.data);
         });
     });
   }
 
-  save(data) {
+  save2(data) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
     return new Promise(resolve => {
       this.http.post(this.uri, data)
         .map(res => res.json())
         .subscribe(data => {
-          this.savedData = data.result;
+          this.savedData = data;
           resolve(this.savedData);
         });
-    }); 
+    });
   }
+
+  save(book:any): Promise<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.uri, JSON.stringify(book), options).toPromise()
+            .then(res => {
+              let body = res.json();
+              return body || {}; 
+            })
+            .catch(this.handleErrorPromise);
+  }
+
+  private extractData(res: Response) {
+    let body = res.json();
+    return body || {};
+  }
+
+  private handleErrorObservable (error: Response | any) {
+    console.error(error.message || error);
+    return Observable.throw(error.message || error);
+  }
+
+  private handleErrorPromise (error: Response | any) {
+    console.error(error.message || error);
+    return Promise.reject(error.message || error);
+  }  
 
 }
