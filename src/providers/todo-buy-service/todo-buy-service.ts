@@ -16,20 +16,15 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class TodoBuyServiceProvider {
 
-  data: any;
+  data: Array<any>;
   savedData: any;
   uri = "http://localhost:8080/api/v1/todobuys";
 
   constructor(public http: Http) {
-    this.data = {};
+    this.data = [];
   }
 
   load() {
-    if (this.data) {
-      // already loaded data
-      return Promise.resolve(this.data);
-    }
-
     // don't have the data yet
     return new Promise(resolve => {
       // We're using Angular HTTP provider to request the data,

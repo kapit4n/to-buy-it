@@ -4,43 +4,10 @@
     </ion-navbar>
 </ion-header>
 <ion-content class="card-background-page">
-    <ion-card>
+    <ion-card *ngFor="let todobuy of data">
         <img src="https://cdn.rubitrux.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/0/2017-custom-jeep-wrangler-rubicon-unlimited-billet-passenger-front_1.jpg" />
-        <div class="card-title">RUBICON</div>
-        <div class="card-subtitle">$45.000</div>
-        <ion-buttons end>
-            <button ion-button icon-right color="royal">
-                Done
-                <ion-icon name="checkmark"></ion-icon>
-            </button>
-        </ion-buttons>
-    </ion-card>
-    <ion-card>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/IMac_vector.svg/1200px-IMac_vector.svg.png" />
-        <div class="card-title">IMAC</div>
-        <div class="card-subtitle">$3.000</div>
-        <ion-buttons end>
-            <button ion-button icon-right color="royal">
-                Done
-                <ion-icon name="checkmark"></ion-icon>
-            </button>
-        </ion-buttons>
-    </ion-card>
-    <ion-card>
-        <img src="https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/105/10529/10529012.jpg" />
-        <div class="card-title">HEAD SET</div>
-        <div class="card-subtitle">$100</div>
-        <ion-buttons end>
-            <button ion-button icon-right color="royal">
-                Done
-                <ion-icon name="checkmark"></ion-icon>
-            </button>
-        </ion-buttons>
-    </ion-card>
-    <ion-card>
-        <img src="https://www.wirefly.com/sites/wirefly.com/files/field/image/compare-cell-phones-2.png" />
-        <div class="card-title">CELLPHONE</div>
-        <div class="card-subtitle">$500</div>
+        <div class="card-title">{{ todobuy.name }}</div>
+        <div class="card-subtitle">${{ todobuy.price }}</div>
         <ion-buttons end>
             <button ion-button icon-right color="royal">
                 Done
