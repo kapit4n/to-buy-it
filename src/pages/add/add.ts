@@ -14,15 +14,14 @@ import { TodoBuyServiceProvider } from '../../providers/todo-buy-service/todo-bu
   providers: [ TodoBuyServiceProvider ],
 })
 export class AddPage {
-
+  todoBuy: any;
   constructor(public navCtrl: NavController, public dataService: TodoBuyServiceProvider) {
-
+    this.todoBuy = {};
   }
 
   save() {
-    var data = {name: "Name", imageUrl: "ImageUrl", description: "Description", price: "40000"};
-    this.dataService.save(data)
-    .then(data => {
+    this.dataService.save(this.todoBuy)
+    .subscribe(data => {
       console.log(data);
     });
   }

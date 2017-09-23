@@ -13,19 +13,19 @@
     <ion-list>
         <ion-item>
             <ion-label stacked>Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input [(ngModel)]="todoBuy.name" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label stacked>Price</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input [(ngModel)]="todoBuy.price" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label stacked>Image url</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input [(ngModel)]="todoBuy.imageUrl" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label stacked>Description</ion-label>
-            <ion-textarea type="text"></ion-textarea>
+            <ion-textarea [(ngModel)]="todoBuy.description" type="text"></ion-textarea>
         </ion-item>
     </ion-list>
     <div padding>

@@ -41,43 +41,15 @@ export class TodoBuyServiceProvider {
     });
   }
 
-  save2(data) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    return new Promise(resolve => {
-      this.http.post(this.uri, data)
-        .map(res => res.json())
-        .subscribe(data => {
-          this.savedData = data;
-          resolve(this.savedData);
-        });
-    });
-  }
-
-  save(book:any): Promise<any> {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.uri, JSON.stringify(book), options).toPromise()
-            .then(res => {
-              let body = res.json();
-              return body || {}; 
-            })
-            .catch(this.handleErrorPromise);
-  }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    return body || {};
+  save(property) {
+      let body = JSON.stringify(property);
+      return this.http.post(this.uri, body)
+          .map(res => res.json())
+          .catch(this.handleErrorObservable);
   }
 
   private handleErrorObservable (error: Response | any) {
     console.error(error.message || error);
     return Observable.throw(error.message || error);
   }
-
-  private handleErrorPromise (error: Response | any) {
-    console.error(error.message || error);
-    return Promise.reject(error.message || error);
-  }  
-
 }
