@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content class="card-background-page">
     <ion-card *ngFor="let todobuy of data">
-        <img src="https://cdn.rubitrux.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/0/2017-custom-jeep-wrangler-rubicon-unlimited-billet-passenger-front_1.jpg" />
+        <img src="{{ todobuy.imageUrl }}"/>
         <div class="card-title">{{ todobuy.name }}</div>
         <div class="card-subtitle">${{ todobuy.price }}</div>
         <ion-buttons end>
