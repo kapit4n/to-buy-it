@@ -20,6 +20,8 @@ export class AddPage {
   }
 
   save() {
+    this.todoBuy.id = 0;
+    this.todoBuy.done = false;
     this.dataService.save(this.todoBuy)
     .subscribe(data => {
       console.log(data);

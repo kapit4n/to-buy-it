@@ -12,6 +12,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public dataService: TodoBuyServiceProvider) {
     this.load();
   }
+
   load() {
     this.dataService.load()
     .then(data => {
@@ -21,4 +22,10 @@ export class HomePage {
     });
   }
 
+  submitBuy(event, id) {
+    var todo = {id: id, name: "xx", imageUrl: "xx", price: "0", description: "xx", done: true};
+    this.dataService.submitTodoBuy(todo, id).subscribe(data => {
+      console.log(data);
+    });
+  }
 }

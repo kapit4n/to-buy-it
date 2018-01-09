@@ -9,9 +9,9 @@
         <div class="card-title">{{ todobuy.name }}</div>
         <div class="card-subtitle">${{ todobuy.price }}</div>
         <ion-buttons end>
-            <button ion-button icon-right color="royal">
+            <button ion-button icon-right color="royal" (click)="submitBuy($event, todobuy.id)">
                 Done
-                <ion-icon name="checkmark"></ion-icon>
+                <ion-icon name="checkmark" ></ion-icon>
             </button>
         </ion-buttons>
     </ion-card>

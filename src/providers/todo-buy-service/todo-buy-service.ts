@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -41,14 +40,21 @@ export class TodoBuyServiceProvider {
     });
   }
 
-  save(property) {
-      let body = JSON.stringify(property);
-      return this.http.post(this.uri, body)
-          .map(res => res.json())
-          .catch(this.handleErrorObservable);
+  save(todoBuy) {
+    let body = JSON.stringify(todoBuy);
+    return this.http.post(this.uri, body)
+      .map(res => res.json())
+      .catch(this.handleErrorObservable);
   }
 
-  private handleErrorObservable (error: Response | any) {
+  submitTodoBuy(todoBuy, id) {
+    let body = JSON.stringify(todoBuy);
+    return this.http.post(this.uri + "/" + id, body)
+      .map(res => res.json())
+      .catch(this.handleErrorObservable);
+  }
+
+  private handleErrorObservable(error: Response | any) {
     console.error(error.message || error);
     return Observable.throw(error.message || error);
   }
