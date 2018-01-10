@@ -23,9 +23,9 @@ export class HomePage {
   }
 
   submitBuy(event, id) {
-    var todo = {id: id, name: "xx", imageUrl: "xx", price: "0", description: "xx", done: true};
+    var todo = {id: id, name: "xx", imageUrl: "xx", price: 0, description: "xx", done: true};
     this.dataService.submitTodoBuy(todo, id).subscribe(data => {
-      console.log(data);
+      this.load();
     });
   }
 }
