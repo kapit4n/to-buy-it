@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { TodoBuyServiceProvider } from '../../providers/todo-buy-service/todo-buy-service';
+import { HomePage } from '../home/home'
 
 /**
  * Generated class for the AddPage page.
@@ -11,7 +12,7 @@ import { TodoBuyServiceProvider } from '../../providers/todo-buy-service/todo-bu
 @Component({
   selector: 'page-add',
   templateUrl: 'add.html',
-  providers: [ TodoBuyServiceProvider ],
+  providers: [TodoBuyServiceProvider],
 })
 export class AddPage {
   todoBuy: any;
@@ -21,11 +22,12 @@ export class AddPage {
 
   save() {
     this.todoBuy.id = 0;
+    this.todoBuy.price = Number(this.todoBuy.price);
     this.todoBuy.done = false;
     this.dataService.save(this.todoBuy)
-    .subscribe(data => {
-      console.log(data);
-    });
+      .subscribe(data => {
+        this.navCtrl.push(HomePage, {});
+      });
   }
 
 }
