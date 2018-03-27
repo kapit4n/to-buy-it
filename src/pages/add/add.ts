@@ -4,10 +4,7 @@ import { TodoBuyServiceProvider } from '../../providers/todo-buy-service/todo-bu
 import { HomePage } from '../home/home'
 
 /**
- * Generated class for the AddPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
+ * Add Page Component
  */
 @Component({
   selector: 'page-add',
@@ -16,10 +13,17 @@ import { HomePage } from '../home/home'
 })
 export class AddPage {
   todoBuy: any;
+  
+  /**
+   * Add Page Component constructor
+   */
   constructor(public navCtrl: NavController, public dataService: TodoBuyServiceProvider) {
     this.todoBuy = {};
   }
 
+  /**
+   * Saves the new todobuy on API
+   */
   save() {
     this.todoBuy.id = 0;
     this.todoBuy.price = Number(this.todoBuy.price);
@@ -29,5 +33,4 @@ export class AddPage {
         this.navCtrl.push(HomePage, {});
       });
   }
-
 }
