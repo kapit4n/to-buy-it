@@ -1,45 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 
-/*
-  Generated class for the TodoBuyServiceProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+/**
+ * Service to handle todobuy resouces
+ */
 @Injectable()
 export class TodoBuyServiceProvider {
 
+  /** todobuy items */
   data: Array<any>;
+  /** savedData */
   savedData: any;
+  /** API url */
   uri = "http://localhost:8080/api/v1/todobuys";
 
+  /**
+   * TodoBuy Service Constructor
+   */
   constructor(public http: Http) {
     this.data = [];
   }
 
+  /** 
+   * Load todobuy items from API
+   */
   load() {
-    // don't have the data yet
     return new Promise(resolve => {
-      // We're using Angular HTTP provider to request the data,
-      // then on the response, it'll map the JSON data to a parsed JS object.
-      // Next, we process the data and resolve the promise with the new data.
       this.http.get(this.uri)
         .map(res => res.json())
         .subscribe(data => {
-          // we've got back the raw data, now generate the core schedule data
-          // and save the data for later reference
           this.data = data;
           resolve(this.data);
         });
     });
   }
 
+  /** 
+   * Call the post method to save todobuy on the API
+   */
   save(todoBuy) {
     let body = JSON.stringify(todoBuy);
     return this.http.post(this.uri, body)
@@ -47,13 +50,19 @@ export class TodoBuyServiceProvider {
       .catch(this.handleErrorObservable);
   }
 
+  /**
+   * Updates the todobuy item on API
+   */
   submitTodoBuy(todoBuy, id) {
     let body = JSON.stringify(todoBuy);
     return this.http.post(this.uri + "/" + id, body)
       .map(res => res.json())
       .catch(this.handleErrorObservable);
   }
-
+  
+  /**
+   * Handles the response error
+   */
   private handleErrorObservable(error: Response | any) {
     console.error(error.message || error);
     return Observable.throw(error.message || error);
