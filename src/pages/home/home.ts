@@ -9,10 +9,17 @@ import { TodoBuyServiceProvider } from '../../providers/todo-buy-service/todo-bu
 })
 export class HomePage {
   data:Array<any> = [];
+  
+  /**
+   * Home component's constructor
+   */
   constructor(public navCtrl: NavController, public dataService: TodoBuyServiceProvider) {
     this.load();
   }
 
+  /**
+   * Loads initial data that will be shown in the home page
+   */
   load() {
     this.dataService.load()
     .then(data => {
@@ -22,6 +29,9 @@ export class HomePage {
     });
   }
 
+  /**
+   * Submits the todobuy to update done field to true
+   */
   submitBuy(event, id) {
     var todo = {id: id, name: "xx", imageUrl: "xx", price: 0, description: "xx", done: true};
     this.dataService.submitTodoBuy(todo, id).subscribe(data => {
