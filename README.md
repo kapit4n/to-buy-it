@@ -1,5 +1,5 @@
 Make a list of products to buy.
-<div>
+<div style=" padding-left: 25%;">
 <img src="https://github.com/kapit4n/ionic-example/raw/master/mockups/todobuy_home.png" width="50%" style="padding"/>
 </div>
 ## How to use this template
