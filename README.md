@@ -1,6 +1,7 @@
 Make a list of products to buy.
-<img src="https://github.com/kapit4n/ionic-example/raw/master/mockups/todobuy_home.png" width="50%"/>
-
+<div>
+<img src="https://github.com/kapit4n/ionic-example/raw/master/mockups/todobuy_home.png" width="50%" style="padding"/>
+</div>
 ## How to use this template
 
 *This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
