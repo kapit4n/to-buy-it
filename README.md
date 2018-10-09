@@ -1,7 +1,5 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
-
-# Mockups
-![Championships](https://github.com/kapit4n/ionic-example/raw/master/mockups/todobuy_home.png)
+Make a list of products to buy.
+<img src="https://github.com/kapit4n/ionic-example/raw/master/mockups/todobuy_home.png" width="50%"/>
 
 ## How to use this template
 
