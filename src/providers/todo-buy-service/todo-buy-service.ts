@@ -19,11 +19,13 @@ export class TodoBuyServiceProvider {
   /** API url */
   uri = "http://localhost:8080/api/v1/todobuys";
 
+
   /**
    * TodoBuy Service Constructor
    */
   constructor(public http: Http) {
     this.data = [];
+    this.uri = "assets/todobuy.json";
   }
 
   /** 

@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Car Jeep",
+        "price": 40000,
+        "imageUrl": "https://www.jeep.com/content/dam/fca-brands/na/jeep/en_us/bhp/lineup/2018-Jeep-BHP-Jeep-Vehicles-Wrangler-JK-v2.jpg.image.500.jpg"
+    },
+    {
+        "id": 2,
+        "name": "iMac",
+        "price": 2500,
+        "imageUrl": "https://store.storeimages.cdn-apple.com/4981/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ma/imac/215/imac-215-selection-hero-201706?wid=452&hei=420&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1505777819647"
+    }
+]
